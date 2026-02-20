@@ -1,0 +1,47 @@
+# ──────────────────────────────────────────────
+#  Flower Shop Backend – application.yml
+# ──────────────────────────────────────────────
+
+spring:
+  application:
+    name: backend-java
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/flower_shop_db
+    username: Gauri
+    password: gauri
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+server:
+  port: 8080
+
+# ── JWT Configuration ──────────────────────────────────────────────────────
+# secret  : plain-text key used to sign tokens (must be ≥ 32 characters for HS256)
+# expiration: token lifetime in milliseconds (86400000 = 24 hours)
+# IMPORTANT: change the secret to a secure random value before going to production!
+jwt:
+  secret: flowershop-super-secret-jwt-key-2026-very-long-and-secure
+  expiration: 86400000   # 24 hours
+
+# ── Swagger / OpenAPI UI ───────────────────────────────────────────────────
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+# ── Logging ────────────────────────────────────────────────────────────────
+logging:
+  level:
+    com.flowershop: INFO
+    org.springframework.security: WARN
